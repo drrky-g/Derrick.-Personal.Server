@@ -1,0 +1,6 @@
+@Derrick.Personal.Server_HostAddress = http://localhost:5261
+
+GET {{Derrick.Personal.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
