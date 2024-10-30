@@ -1,4 +1,4 @@
-namespace Derrick.Personal.Server;
+namespace Derrick.Personal.Server.Host;
 
 public class WeatherForecast
 {

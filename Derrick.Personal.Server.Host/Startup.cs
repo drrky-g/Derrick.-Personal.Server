@@ -1,15 +1,12 @@
-using Derrick.Personal.Repository.Interfaces;
-using Derrick.Personal.Repository.Services;
-using Microsoft.AspNetCore.Identity.Data;
-using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
-
-namespace Derrick.Personal.Server;
+using Derrick.Personal.Server.Repository.Interfaces;
+using Derrick.Personal.Server.Repository.Services;
+namespace Derrick.Personal.Server.Host;
 
 public class Startup
 {
     public IConfiguration Configuration { get; }
     
-    public Startup(IHostingEnvironment env)
+    public Startup(IHostEnvironment env)
     {
         var builder = new ConfigurationBuilder()
             .SetBasePath(env.ContentRootPath)

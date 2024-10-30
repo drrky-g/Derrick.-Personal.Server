@@ -1,9 +1,9 @@
-using Derrick.Personal.Repository.Interfaces;
-using Derrick.Personal.Repository.Services;
+using Derrick.Personal.Server.Repository.Interfaces;
+using Derrick.Personal.Server.Repository.Services;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Identity.Data;
 
-namespace Derrick.Personal.Server;
+namespace Derrick.Personal.Server.Host;
 
 public class Program
 {

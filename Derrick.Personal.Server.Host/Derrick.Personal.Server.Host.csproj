@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <RootNamespace>Derrick.Personal.Server</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Derrick.Personal.Repository\Derrick.Personal.Repository.csproj" />
+      <ProjectReference Include="..\Derrick.Personal.Server.Repository\Derrick.Personal.Server.Repository.csproj" />
     </ItemGroup>
 
 </Project>

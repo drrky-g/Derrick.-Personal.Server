@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Derrick.Personal.Server", "Derrick.Personal.Server\Derrick.Personal.Server.csproj", "{372F0570-291F-4FEA-AFE0-98A2D5750FE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Derrick.Personal.Server.Host", "Derrick.Personal.Server.Host\Derrick.Personal.Server.Host.csproj", "{372F0570-291F-4FEA-AFE0-98A2D5750FE1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BF950A2F-D160-4907-90F3-39C4EE1C3267}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Derrick.Personal.Repository", "Derrick.Personal.Repository\Derrick.Personal.Repository.csproj", "{7C66F43C-B384-47BF-A3E3-CF39C49FC07F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Derrick.Personal.Server.Repository", "Derrick.Personal.Server.Repository\Derrick.Personal.Server.Repository.csproj", "{7C66F43C-B384-47BF-A3E3-CF39C49FC07F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-namespace Derrick.Personal.Repository.Interfaces;
+namespace Derrick.Personal.Server.Repository.Interfaces;
 
 public interface ITokenGenerator
 {

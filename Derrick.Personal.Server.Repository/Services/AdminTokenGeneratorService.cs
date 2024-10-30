@@ -1,10 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Derrick.Personal.Repository.Interfaces;
+using Derrick.Personal.Server.Repository.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Derrick.Personal.Repository.Services;
+namespace Derrick.Personal.Server.Repository.Services;
 
 public class AdminTokenGeneratorService : IAdminTokenGenerator
 {
