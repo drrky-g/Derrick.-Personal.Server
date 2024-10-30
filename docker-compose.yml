@@ -1,0 +1,12 @@
+﻿services:
+  derrick.personal.server:
+    image: derrick.personal.server
+    build:
+      context: .
+      dockerfile: Derrick.Personal.Server/Dockerfile
+
+  derrick.personal.repository:
+    image: derrick.personal.repository
+    build:
+      context: .
+      dockerfile: Derrick.Personal.Repository/Dockerfile
