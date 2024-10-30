@@ -1,5 +1,6 @@
 using Derrick.Personal.Repository.Interfaces;
 using Derrick.Personal.Repository.Services;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Identity.Data;
 
 namespace Derrick.Personal.Server;
@@ -10,19 +11,28 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
-        builder.Services.AddAuthorization();
+        var configBuilder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json");
         
-        var configBuilder = builder.Configuration.AddJsonFile("appsettings.json", true, true);
         IConfiguration config = configBuilder.Build();
+        
         builder.Configuration.AddConfiguration(config);
 
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        
+        builder.Services.AddSingleton<IAdminTokenGenerator, AdminTokenGeneratorService>(provider =>
+        {
+            var config = provider.GetRequiredService<IConfiguration>();
+            ArgumentNullException.ThrowIfNull(config);
+            var adminTokenSetting = config.GetValue<string>("AdminToken");
+            ArgumentNullException.ThrowIfNull(adminTokenSetting);
+            return new AdminTokenGeneratorService(adminTokenSetting);
+        });
+
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-
+        
         var app = builder.Build();
-
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
@@ -32,31 +42,26 @@ public class Program
 
         app.UseHttpsRedirection();
 
-        app.UseAuthorization();
+        //app.UseAuthorization();
 
         var summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        builder.Services.AddSingleton<ITokenGenerator, AdminTokenGeneratorService>(provider =>
-        {
-            var config = provider.GetRequiredService<IConfiguration>();
-            ArgumentNullException.ThrowIfNull(config);
-            var adminTokenSetting = config.GetValue<string>("AdminToken");
-            ArgumentNullException.ThrowIfNull(adminTokenSetting);
-            return new AdminTokenGeneratorService(adminTokenSetting);
-        });
+
 
 
         app.MapPost("/login", (LoginRequest req, IAdminTokenGenerator generator) =>
-        {
-            //add password validation logic
-            return new
             {
-                access_token = generator.GenerateToken(req.Email)
-            };
-        });
+                //add password validation logic
+                return new
+                {
+                    access_token = generator.GenerateToken(req.Email)
+                };
+            })
+            .WithName("Login")
+            .WithOpenApi();
         
         app.MapGet("/weatherforecast", (HttpContext httpContext) =>
             {
@@ -71,9 +76,9 @@ public class Program
                 return forecast;
             })
             .WithName("GetWeatherForecast")
-            
-            
             .WithOpenApi();
+
+
 
         app.Run();
     }
